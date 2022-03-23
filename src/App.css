@@ -53,3 +53,15 @@ h1 :nth-child( 1 ) {
 .table {
   color: white;
 }
+
+.main-filter {
+  color: white;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 30px;
+}
+
+.main-filter input {
+  border: 1px solid yellow;
+  box-shadow: 1px 1px 1px 1px yellow;
+}

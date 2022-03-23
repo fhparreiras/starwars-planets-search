@@ -5,6 +5,7 @@ import filterContext from './filterContext';
 
 function FilterProvider({ children }) {
   const [data, setData] = useState([]);
+  const [filterByName, setFilterByName] = useState({ name: 'vazio' });
 
   useEffect(() => {
     async function fetchData() {
@@ -15,7 +16,7 @@ function FilterProvider({ children }) {
   }, []);
 
   return (
-    <filterContext.Provider value={ { data } }>
+    <filterContext.Provider value={ { data, setData, filterByName, setFilterByName } }>
       { children }
     </filterContext.Provider>
   );

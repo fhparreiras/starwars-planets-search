@@ -3,11 +3,10 @@ import filterContext from '../context/filterContext';
 import FilterProvider from '../context/FilterProvider';
 
 function Table() {
-  const { data } = useContext(filterContext);
-
+  const { data, filterByName } = useContext(filterContext);
+  console.log('teste: ', filterByName.name);
   return (
-    <FilterProvider>
-      { console.log(data) }
+    <FilterProvider value={ { filterByName } }>
       <table className="table">
         <thead>
           <tr>
