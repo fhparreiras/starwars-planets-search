@@ -49,3 +49,7 @@ h1 :nth-child( 1 ) {
     transform: rotate(360deg);
   }
 }
+
+.table {
+  color: white;
+}
