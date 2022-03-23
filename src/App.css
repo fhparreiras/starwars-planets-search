@@ -50,8 +50,15 @@ h1 :nth-child( 1 ) {
   }
 }
 
-.table {
+.table, td, th, tr {
+  background-color: rgb(0, 0, 0, 0.1);
+  border: 1px solid white;
   color: white;
+  text-align: center;
+}
+
+.table td {
+  padding: 5px;
 }
 
 .main-filter {

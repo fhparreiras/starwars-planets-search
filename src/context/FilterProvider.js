@@ -5,7 +5,7 @@ import filterContext from './filterContext';
 
 function FilterProvider({ children }) {
   const [data, setData] = useState([]);
-  const [filterByName, setFilterByName] = useState({ name: 'vazio' });
+  const [filterByName, setFilterByName] = useState({ name: '' });
 
   useEffect(() => {
     async function fetchData() {

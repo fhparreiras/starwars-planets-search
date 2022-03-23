@@ -4,7 +4,8 @@ import FilterProvider from '../context/FilterProvider';
 
 function Table() {
   const { data, filterByName } = useContext(filterContext);
-  console.log('teste: ', filterByName.name);
+  const filteredName = filterByName.name.toLowerCase();
+
   return (
     <FilterProvider value={ { filterByName } }>
       <table className="table">
@@ -26,23 +27,24 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          {data.map((el, index) => (
-            <tr key={ index }>
-              <td>{ el.name }</td>
-              <td>{ el.rotation_period}</td>
-              <td>{ el.orbital_period}</td>
-              <td>{ el.diameter}</td>
-              <td>{ el.climate}</td>
-              <td>{ el.gravity}</td>
-              <td>{ el.terrain}</td>
-              <td>{ el.surface_water}</td>
-              <td>{ el.population}</td>
-              <td>{ el.films}</td>
-              <td>{ el.created}</td>
-              <td>{ el.edited}</td>
-              <td>{ el.url}</td>
-            </tr>
-          ))}
+          {data.filter((e) => e.name.toLowerCase().includes(filteredName))
+            .map((el, index) => (
+              <tr key={ index }>
+                <td>{ el.name }</td>
+                <td>{ el.rotation_period}</td>
+                <td>{ el.orbital_period}</td>
+                <td>{ el.diameter}</td>
+                <td>{ el.climate}</td>
+                <td>{ el.gravity}</td>
+                <td>{ el.terrain}</td>
+                <td>{ el.surface_water}</td>
+                <td>{ el.population}</td>
+                <td>{ el.films}</td>
+                <td>{ el.created}</td>
+                <td>{ el.edited}</td>
+                <td>{ el.url}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </FilterProvider>
