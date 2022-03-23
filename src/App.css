@@ -29,6 +29,16 @@
   color: #61dafb;
 }
 
+body {
+  background-image: url('starWarsBg.jpg');
+  background-size: cover;
+}
+
+h1 :nth-child( 1 ) {
+  display: flex;
+  margin: 0 auto;
+}
+
 @keyframes App-logo-spin {
 
   from {
