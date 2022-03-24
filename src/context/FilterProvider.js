@@ -10,6 +10,9 @@ function FilterProvider({ children }) {
     setNumericFilters] = useState([{
     column: '', comparison: '', value: '' }]);
   const [subFilters, setSubFilters] = useState([]);
+  const [options, setOptions] = useState([
+    'orbital_period', 'diameter', 'rotation_period', 'surface_water',
+  ]);
 
   useEffect(() => {
     async function fetchData() {
@@ -28,7 +31,9 @@ function FilterProvider({ children }) {
         filterByNumericValues,
         setNumericFilters,
         subFilters,
-        setSubFilters } }
+        setSubFilters,
+        options,
+        setOptions } }
     >
       { children }
     </filterContext.Provider>

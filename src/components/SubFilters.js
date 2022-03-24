@@ -3,7 +3,7 @@ import filterContext from '../context/filterContext';
 
 function MainFilter() {
   const { filterByNumericValues, setNumericFilters,
-    subFilters, setSubFilters } = useContext(filterContext);
+    subFilters, setSubFilters, options, setOptions } = useContext(filterContext);
 
   const { column, comparison, value } = filterByNumericValues;
   function onFilterChange(event) {
@@ -18,6 +18,10 @@ function MainFilter() {
     setSubFilters((prevState) => (
       [...prevState, `${column} ${comparison} ${value}`]
     ));
+    const optionsArray = options.concat();
+    const optionIndex = optionsArray.indexOf(filterByNumericValues.column);
+    optionsArray.splice(optionIndex, 1);
+    setOptions(optionsArray);
   }
   console.log('subfilters após o clique', subFilters);
 
@@ -26,7 +30,8 @@ function MainFilter() {
     const itemIndex = newArray.indexOf(e.target.name);
     newArray.splice(itemIndex, 1);
     setSubFilters(newArray);
-    console.log('Subfilters após o splice:', newArray, 'subfilters antigo ', subFilters);
+    const itemBackToList = e.target.name.split(' ')[0];
+    setOptions((prevState) => [...prevState, itemBackToList]);
   }
 
   return (
@@ -37,11 +42,9 @@ function MainFilter() {
         name="column"
         data-testid="column-filter"
       >
-        <option value="population">population</option>
-        <option value="orbital_period">orbital_period</option>
-        <option value="diameter">diameter</option>
-        <option value="rotation_period">rotation_period</option>
-        <option value="surface_water">surface_water</option>
+        {options.map((op, id) => (
+          <option key={ id } value={ op }>{ op }</option>
+        ))}
       </select>
       <div>
         <label htmlFor="comparison">
