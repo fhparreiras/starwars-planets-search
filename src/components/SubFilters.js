@@ -83,15 +83,32 @@ function SubFilters() {
       >
         Filter
       </button>
-      <div data-testid="filter">
+      <div>
         <br />
         Filtros selecionados:
         {subFilters.length > 0 && subFilters.map((filter, id) => (
-          <div key={ id }>
+          <div
+            key={ id }
+            data-testid="filter"
+          >
             {filter}
             <button name={ filter } onClick={ removeItem } type="button">X</button>
           </div>
         ))}
+        { subFilters.length > 0 && (
+          <button
+            data-testid="button-remove-filters"
+            onClick={ () => {
+              setSubFilters([]);
+              setOptions(['population', 'orbital_period', 'diameter',
+                'rotation_period', 'surface_water',
+              ]);
+            } }
+            type="button"
+          >
+            Remover todas filtragens
+          </button>
+        )}
       </div>
     </form>
   );
