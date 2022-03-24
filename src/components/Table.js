@@ -16,10 +16,10 @@ function Table() {
       // console.log('column: ', column, 'comparison: ', comparison, 'value: ', value);
       filteredTable = filteredTable.filter((filter) => {
         if (comparison === 'maior') {
-          return Number(filter[column] > Number(value));
+          return filter[column] > Number(value);
         }
         if (comparison === 'menor') {
-          return Number(filter[column] < Number(value));
+          return filter[column] < Number(value);
         }
         return Number(filter[column] === value);
       });
