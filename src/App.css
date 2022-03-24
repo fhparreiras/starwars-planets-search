@@ -74,7 +74,55 @@ h1 :nth-child( 1 ) {
 }
 
 .sub-filters {
+  align-content: center;
+  background-color: rgb(0, 0, 0, 0.4);
+  border: 2px solid yellow;
+  border-radius: 10px;
   color: white;
+  display: flex;
+  flex-flow: column wrap;
   font-size: small;
+  font-weight: 600;
+  justify-content: center;
+  margin: 10px auto;
+  max-height: 700px;
+  max-width: 250px;
+  padding: 15px;
+}
+
+.sub-filters input {
+  height: 15px;
+  width: 50px;
+}
+
+.sub-filters label {
   padding: 5px;
+}
+
+.sub-filters-button {
+  align-self: center;
+  background-color: yellow;
+  border: 2px groove black;
+  border-radius: 3px;
+  height: 30px;
+  width: 50px;
+}
+
+.btn-x {
+  align-self: center;
+  background-color: red;
+  border-radius: 5px;
+  color: black;
+  font-size: 7px;
+  font-weight: 900;
+  margin: 0 auto;
+  width: 20px;
+}
+
+.selected-filters {
+  margin: 5px;
+}
+
+.remove-all {
+  margin-top: 10px;
 }

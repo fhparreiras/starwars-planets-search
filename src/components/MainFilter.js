@@ -8,8 +8,6 @@ function MainFilter() {
     setFilterByName({ [event.target.name]: event.target.value });
   }
 
-  // console.log(filterByName.name);
-
   return (
     <form className="main-filter">
       <label htmlFor="name">

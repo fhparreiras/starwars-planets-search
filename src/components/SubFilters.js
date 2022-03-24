@@ -44,16 +44,19 @@ function SubFilters() {
 
   return (
     <form className="sub-filters">
-      <select
-        defaultValue="population"
-        onChange={ onFilterChange }
-        name="column"
-        data-testid="column-filter"
-      >
-        {options.map((op, id) => (
-          <option key={ id } value={ op }>{ op }</option>
-        ))}
-      </select>
+      <label htmlFor="column">
+        Coluna:
+        <select
+          defaultValue="population"
+          onChange={ onFilterChange }
+          name="column"
+          data-testid="column-filter"
+        >
+          {options.map((op, id) => (
+            <option key={ id } value={ op }>{ op }</option>
+          ))}
+        </select>
+      </label>
       <div>
         <label htmlFor="comparison">
           {'Operador: '}
@@ -69,34 +72,47 @@ function SubFilters() {
           </select>
         </label>
       </div>
-      <input
-        name="value"
-        onChange={ onFilterChange }
-        type="number"
-        data-testid="value-filter"
-        defaultValue="0"
-      />
+      <label htmlFor="value">
+        Valor:
+        <input
+          name="value"
+          onChange={ onFilterChange }
+          type="number"
+          data-testid="value-filter"
+          defaultValue="0"
+        />
+      </label>
       <button
+        className="sub-filters-button"
         data-testid="button-filter"
         onClick={ handleFilterClick }
         type="button"
       >
         Filter
       </button>
-      <div>
-        <br />
-        Filtros selecionados:
+      <div className="selected-filters">
+        {subFilters.length > 0 && 'Filtros selecionados:'}
+        {' '}
         {subFilters.length > 0 && subFilters.map((filter, id) => (
           <div
             key={ id }
             data-testid="filter"
           >
             {filter}
-            <button name={ filter } onClick={ removeItem } type="button">X</button>
+            {' '}
+            <button
+              name={ filter }
+              className="btn-x"
+              onClick={ removeItem }
+              type="button"
+            >
+              X
+            </button>
           </div>
         ))}
         { subFilters.length > 0 && (
           <button
+            className="remove-all"
             data-testid="button-remove-filters"
             onClick={ () => {
               setSubFilters([]);
