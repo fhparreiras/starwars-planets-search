@@ -15,15 +15,23 @@ function SubFilters() {
   }
 
   function handleFilterClick() {
-    setSubFilters((prevState) => (
-      [...prevState, `${column} ${comparison} ${value}`]
-    ));
     const optionsArray = options.concat();
-    const optionIndex = optionsArray.indexOf(filterByNumericValues.column);
-    optionsArray.splice(optionIndex, 1);
-    setOptions(optionsArray);
+    if (column === undefined || comparison === undefined || value === undefined) {
+      setSubFilters(['population maior que 0']);
+      const optionIndex = optionsArray.indexOf('population');
+      optionsArray.splice(optionIndex, 1);
+      setOptions(optionsArray);
+    } else {
+      setSubFilters((prevState) => (
+        [...prevState, `${column} ${comparison} ${value}`]
+      ));
+      const optionIndex = optionsArray.indexOf(filterByNumericValues.column);
+      optionsArray.splice(optionIndex, 1);
+      setOptions(optionsArray);
+    }
   }
   console.log('subfilters após o clique', subFilters);
+  console.log(filterByNumericValues);
 
   function removeItem(e) {
     const newArray = subFilters.concat();
@@ -37,6 +45,7 @@ function SubFilters() {
   return (
     <form className="sub-filters">
       <select
+        defaultValue="population"
         onChange={ onFilterChange }
         name="column"
         data-testid="column-filter"
@@ -49,6 +58,7 @@ function SubFilters() {
         <label htmlFor="comparison">
           {'Operador: '}
           <select
+            defaultValue="maior que"
             name="comparison"
             onChange={ onFilterChange }
             data-testid="comparison-filter"

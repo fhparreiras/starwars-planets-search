@@ -8,7 +8,7 @@ function FilterProvider({ children }) {
   const [filterByName, setFilterByName] = useState({ name: '' });
   const [filterByNumericValues,
     setNumericFilters] = useState([{
-    column: '', comparison: '', value: '' }]);
+    column: 'population', comparison: 'maior que', value: '0' }]);
   const [subFilters, setSubFilters] = useState([]);
   const [options, setOptions] = useState([
     'population', 'orbital_period', 'diameter', 'rotation_period', 'surface_water',
