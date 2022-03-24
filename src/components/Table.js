@@ -3,8 +3,29 @@ import filterContext from '../context/filterContext';
 import FilterProvider from '../context/FilterProvider';
 
 function Table() {
-  const { data, filterByName } = useContext(filterContext);
+  const { data, filterByName, subFilters } = useContext(filterContext);
   const filteredName = filterByName.name.toLowerCase();
+  let filteredTable = data.filter((e) => e.name.toLowerCase().includes(filteredName));
+
+  // function handleFilters() {
+  if (subFilters.length > 0) {
+    subFilters.forEach((subFilter) => {
+      const column = subFilter.split(' ')[0];
+      const comparison = subFilter.split(' ')[1];
+      const value = subFilter.split(' ')[3];
+      // console.log('column: ', column, 'comparison: ', comparison, 'value: ', value);
+      filteredTable = filteredTable.filter((filter) => {
+        if (comparison === 'maior') {
+          return Number(filter[column] > Number(value));
+        }
+        if (comparison === 'menor') {
+          return Number(filter[column] < Number(value));
+        }
+        return Number(filter[column] === value);
+      });
+    });
+  }
+  // }
 
   return (
     <FilterProvider value={ { filterByName } }>
@@ -27,7 +48,8 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          {data.filter((e) => e.name.toLowerCase().includes(filteredName))
+          {/* data.filter((e) => e.name.toLowerCase().includes(filteredName)) */}
+          {filteredTable
             .map((el, index) => (
               <tr key={ index }>
                 <td>{ el.name }</td>

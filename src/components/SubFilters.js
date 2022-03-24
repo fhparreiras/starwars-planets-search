@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import filterContext from '../context/filterContext';
 
-function MainFilter() {
+function SubFilters() {
   const { filterByNumericValues, setNumericFilters,
     subFilters, setSubFilters, options, setOptions } = useContext(filterContext);
 
@@ -37,7 +37,6 @@ function MainFilter() {
   return (
     <form className="sub-filters">
       <select
-        aria-invalid="false"
         onChange={ onFilterChange }
         name="column"
         data-testid="column-filter"
@@ -54,8 +53,8 @@ function MainFilter() {
             onChange={ onFilterChange }
             data-testid="comparison-filter"
           >
-            <option value="menor que">menor que</option>
             <option value="maior que">maior que</option>
+            <option value="menor que">menor que</option>
             <option value="igual a">igual a</option>
           </select>
         </label>
@@ -65,6 +64,7 @@ function MainFilter() {
         onChange={ onFilterChange }
         type="number"
         data-testid="value-filter"
+        defaultValue="0"
       />
       <button
         data-testid="button-filter"
@@ -87,4 +87,4 @@ function MainFilter() {
   );
 }
 
-export default MainFilter;
+export default SubFilters;

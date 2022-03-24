@@ -11,7 +11,7 @@ function FilterProvider({ children }) {
     column: '', comparison: '', value: '' }]);
   const [subFilters, setSubFilters] = useState([]);
   const [options, setOptions] = useState([
-    'orbital_period', 'diameter', 'rotation_period', 'surface_water',
+    'population', 'orbital_period', 'diameter', 'rotation_period', 'surface_water',
   ]);
 
   useEffect(() => {
